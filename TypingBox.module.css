@@ -1,0 +1,231 @@
+.typingContainer {
+  background: var(--card-bg);
+  backdrop-filter: blur(12px);
+  border-radius: 32px;
+  padding: 2rem;
+  border: 1px solid var(--border);
+  transition: all 0.3s ease;
+}
+
+.typingContainer:focus-within {
+  border-color: var(--primary);
+  box-shadow: var(--glow);
+}
+
+.wordsArea {
+  background: var(--surface);
+  border-radius: 24px;
+  padding: 2rem;
+  min-height: 320px;
+  max-height: 400px;
+  overflow-y: auto;
+  transition: all 0.2s ease;
+  position: relative;
+}
+
+.wordsArea::-webkit-scrollbar {
+  width: 4px;
+}
+
+.wordModern {
+  display: inline-block;
+  margin-right: 16px;
+  margin-bottom: 12px;
+  padding: 8px 12px;
+  border-radius: 12px;
+  font-size: 1.6rem;
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 500;
+  transition: all 0.15s cubic-bezier(0.34, 1.2, 0.64, 1);
+  cursor: pointer;
+  letter-spacing: 0.5px;
+  position: relative;
+}
+
+.wordModern::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background: var(--primary);
+  transition: all 0.2s ease;
+  transform: translateX(-50%);
+}
+
+.wordModern:hover::before {
+  width: 80%;
+}
+
+.wordCorrect {
+  color: var(--accent);
+  text-shadow: var(--glow-green);
+}
+
+.wordWrong {
+  color: var(--accent-red);
+  text-shadow: var(--glow-red);
+}
+
+.wordActive {
+  background: linear-gradient(135deg, rgba(99, 102, 241, 0.2), rgba(6, 182, 212, 0.1));
+  transform: scale(1.05);
+  border: 1px solid rgba(99, 102, 241, 0.3);
+}
+
+.charHighlightCorrect {
+  color: var(--accent);
+  background: rgba(16, 185, 129, 0.1);
+  border-radius: 4px;
+  padding: 2px;
+}
+
+.charHighlightWrong {
+  color: var(--accent-red);
+  background: rgba(239, 68, 68, 0.1);
+  text-decoration: line-through;
+  text-decoration-color: var(--accent-red);
+  text-decoration-thickness: 2px;
+  border-radius: 4px;
+}
+
+.cursorModern {
+  border-left: 2px solid var(--primary);
+  animation: blink 1s infinite;
+  margin-left: -1px;
+  box-shadow: var(--glow);
+}
+
+@keyframes blink {
+  0%, 50% {
+    border-left-color: var(--primary);
+    opacity: 1;
+  }
+  51%, 100% {
+    border-left-color: transparent;
+    opacity: 0.3;
+  }
+}
+
+.controlPanel {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.difficultyBadge {
+  background: var(--surface);
+  border-radius: 40px;
+  padding: 8px 16px;
+  border: 1px solid var(--border);
+  transition: all 0.2s ease;
+}
+
+.difficultyBadge select {
+  background: transparent;
+  border: none;
+  color: var(--text-primary);
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.timerModern {
+  text-align: center;
+  padding: 8px 24px;
+  background: var(--surface);
+  border-radius: 60px;
+  border: 1px solid var(--border);
+}
+
+.timerValueModern {
+  font-size: 2rem;
+  font-weight: 700;
+  font-family: 'JetBrains Mono', monospace;
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  letter-spacing: 4px;
+}
+
+.resultModalModern {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: var(--card-bg);
+  backdrop-filter: blur(20px);
+  border-radius: 32px;
+  padding: 2rem;
+  min-width: 400px;
+  text-align: center;
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow);
+  z-index: 1000;
+  animation: scaleUp 0.3s ease;
+}
+
+.resultTitleModern {
+  font-size: 2rem;
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  margin-bottom: 1.5rem;
+}
+
+.resultStatsModern {
+  display: flex;
+  justify-content: center;
+  gap: 3rem;
+  margin: 2rem 0;
+}
+
+.resultStatModern {
+  text-align: center;
+}
+
+.resultValueModern {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--primary);
+}
+
+@media (max-width: 768px) {
+  .typingContainer {
+    padding: 1rem;
+  }
+  
+  .wordsArea {
+    padding: 1rem;
+    min-height: 250px;
+  }
+  
+  .wordModern {
+    font-size: 1rem;
+    margin-right: 8px;
+    padding: 4px 8px;
+  }
+  
+  .timerValueModern {
+    font-size: 1.2rem;
+    letter-spacing: 2px;
+  }
+  
+  .resultModalModern {
+    min-width: 300px;
+    padding: 1.5rem;
+  }
+  
+  .resultStatsModern {
+    gap: 1.5rem;
+  }
+  
+  .resultValueModern {
+    font-size: 1.5rem;
+  }
+}
